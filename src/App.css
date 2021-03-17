@@ -40,4 +40,13 @@
 .movie-list {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.movie-card {
+  width: 250px;
+}
+
+.desc {
+  text-align: justify;
 }
