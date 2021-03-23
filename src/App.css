@@ -7,3 +7,10 @@
 .movie-list > * {
   margin: 20px;
 }
+
+.rates {
+  color: white;
+  display: flex;
+  max-width: 400px;
+  text-align: center;
+}

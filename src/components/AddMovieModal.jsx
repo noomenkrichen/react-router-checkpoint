@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import ReactStars from "react-stars";
 
 function AddMovieModal(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [posterUrl, setPosterUrl] = useState("");
+  const [rate, setRate] = useState(0);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const ratingChanged = (newRating) => {
+    setRate(newRating);
+  };
 
   return (
     <>
@@ -17,14 +22,34 @@ function AddMovieModal(props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Movie</Modal.Title>
+          <Modal.Title>Add new movie</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group>
-              <Form.Control type="text" placeholder="Enter movie title..." onChange={(e) => setTitle(e.target.value)}/>
-              <Form.File id="posterUrl" label="Choose poster URL:" onChange={(e) => setPosterUrl(e.target.value)}/>
-              <Form.Control as="textarea" rows={3} placeholder="Enter movie description..." onChange={(e) => setDescription(e.target.value)}/>
+              <Form.Control
+                type="text"
+                placeholder="Enter movie title..."
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <Form.Control
+                type="text"
+                placeholder="Enter poster URL..."
+                onChange={(e) => setPosterUrl(e.target.value)}
+              />
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder="Enter movie description..."
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                color2={"#ffd700"}
+                value={rate}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -34,14 +59,15 @@ function AddMovieModal(props) {
           </Button>
           <Button
             variant="primary"
-            onClick={() =>
+            onClick={() => {
               props.addMovie({
                 title: title,
                 description: description,
-                posterUrl: `img/${posterUrl}`,
-                rate: 0
-              })
-            }
+                posterUrl: posterUrl,
+                rate: rate,
+              });
+              handleClose();
+            }}
           >
             Save Changes
           </Button>
