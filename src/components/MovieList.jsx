@@ -1,11 +1,13 @@
 import React from "react";
 import MovieCard from "./MovieCard";
+import {Link} from "react-router-dom";
 
 const MovieList = ({ movies }) => {
+ 
   return movies.map((el, i) => (
-    <div key={i}>
-      <MovieCard movie={el} />
-    </div>
+    <Link to={`/movie/${el.imdbID}`} key={i}>
+      <MovieCard el={el}/>
+    </Link>
   ));
 };
 

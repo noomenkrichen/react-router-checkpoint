@@ -14,3 +14,15 @@
   max-width: 400px;
   text-align: center;
 }
+
+.poster {
+  display: flex;
+}
+
+a:link,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: black;
+}

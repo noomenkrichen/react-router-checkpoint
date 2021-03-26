@@ -2,18 +2,18 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import ReactStars from "react-stars";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ el }) => {
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={movie.posterUrl} />
+      <Card.Img variant="top" src={el.posterUrl} />
       <Card.Body>
-        <Card.Title>{movie.title}</Card.Title>
-        <Card.Text>{movie.description}</Card.Text>
+        <Card.Title>{el.title}</Card.Title>
+        <Card.Text>{el.description}</Card.Text>
         <ReactStars
           count={5}
           size={24}
           color2={"#ffd700"}
-          value={movie.rate}
+          value={el.rate}
           edit={false}
         />
       </Card.Body>

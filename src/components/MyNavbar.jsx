@@ -10,7 +10,11 @@ const MyNavbar = (props) => {
   };
   return (
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="">My Movies App</Navbar.Brand>
+      <Navbar.Brand href="">Movie App</Navbar.Brand>
+      <Nav className="mr-auto">
+      <Nav.Link href="#home">Home</Nav.Link>
+      <Nav.Link href="#features">Movie List</Nav.Link>
+    </Nav>
       <Nav className="mr-auto">
         <div className="rates">
           Search Movies by Rating:
@@ -28,7 +32,7 @@ const MyNavbar = (props) => {
           type="text"
           placeholder="Search movie by title"
           className="mr-sm-2"
-          onChange={(e) => props.searchMovies(e.target.value)}
+          onChange={(e) => props.searchMoviesTitle(e.target.value)}
         />
       </Form>
     </Navbar>
