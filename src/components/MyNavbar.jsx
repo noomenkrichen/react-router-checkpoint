@@ -12,10 +12,6 @@ const MyNavbar = (props) => {
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand href="">Movie App</Navbar.Brand>
       <Nav className="mr-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Movie List</Nav.Link>
-    </Nav>
-      <Nav className="mr-auto">
         <div className="rates">
           Search Movies by Rating:
           <ReactStars

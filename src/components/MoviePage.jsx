@@ -25,15 +25,20 @@ const MoviePage = ({match}) => {
     <div className="my-movie">
       <h1>{movie.Title}</h1>
       <div className="poster">
-        <img src={poster.url} alt="poster"/>
+        <img src={movie.Poster} alt="poster"/>
         <div>
           <p><b>Released :</b> {movie.Released}</p>
           <p><b>Production :</b> {movie.Production}</p>
           <p><b>Writer :</b> {movie.Writer}</p>
           <p><b>Actors :</b> {movie.Actors}</p>
           <p><b>Plot :</b> {movie.Plot}</p>
+          <p><b>Awards :</b> {movie.Awards}</p>
+          <p><b>Box Office :</b> {movie.BoxOffice}</p>
+          <p><b>Director :</b> {movie.Director}</p>
+          <p><b>Genre :</b> {movie.Genre}</p>
+          <p><b>Run Time :</b> {movie.Runtime}</p>
         </div>
-      </div>      
+      </div>  <hr/>    
     </div>
   );
 };
