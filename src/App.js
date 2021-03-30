@@ -108,8 +108,6 @@ function App() {
     setDisplay(arr.filter((el) => el.rate >= rate));
   };
 
-  
-
   return (
     <Router>
       <div className="App">
