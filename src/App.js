@@ -120,9 +120,12 @@ function App() {
 
         <Route path="/movie/:id" component={MoviePage}/>
 
-        <div className="movie-list">
-          <MovieList movies={display} />
-        </div> 
+        <Route path="/" exact>
+          <div className="movie-list">
+            <MovieList movies={display} />
+          </div>
+        </Route>
+         
       </div>
 
     </Router>
