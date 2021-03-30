@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
 import ReactStars from "react-stars";
+import {Link} from "react-router-dom";
 
 const MyNavbar = (props) => {
   const [rate, setRate] = useState(0);
@@ -10,7 +11,10 @@ const MyNavbar = (props) => {
   };
   return (
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="">Movie App</Navbar.Brand>
+      <Link to="/">
+        <Navbar.Brand href="#">Movie App</Navbar.Brand>
+      </Link>     
+      
       <Nav className="mr-auto">
         <div className="rates">
           Search Movies by Rating:
@@ -23,6 +27,7 @@ const MyNavbar = (props) => {
           />
         </div>
       </Nav>
+
       <Form inline>
         <FormControl
           type="text"
