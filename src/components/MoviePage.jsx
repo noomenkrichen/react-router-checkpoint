@@ -4,21 +4,21 @@ const MoviePage = ({match}) => {
   
   useEffect(()=>{
     fetchItems();
-    console.log(match)
+    //console.log(match)
   },[match]);
 
   const [movie,setMovie] = useState({});
-  const [poster,setPoster] = useState('');
+  //const [poster,setPoster] = useState('');
 
   const fetchItems = async () => {
       const data = await fetch(`http://www.omdbapi.com/?apikey=32520f97&i=${match.params.id}`);
-      const image = await fetch(`http://img.omdbapi.com/?apikey=32520f97&i=${match.params.id}`);
+      //const image = await fetch(`http://img.omdbapi.com/?apikey=32520f97&i=${match.params.id}`);
 
       const item = await data.json();
       setMovie(item);
-      setPoster(image);
-      console.log(item);
-      console.log(image);
+      //setPoster(image);
+      //console.log(item);
+      //console.log(image);
     }
 
   return (
