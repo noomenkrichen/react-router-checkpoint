@@ -112,22 +112,20 @@ function App() {
 
   return (
     <Router>
-      
       <div className="App">
         <MyNavbar searchMovies={searchMoviesTitle}   searchMoviesRate={searchMoviesRate} />
         
         <AddMovieModal addMovie={addMovie} />
-
-        <Route path="/movie/:id" component={MoviePage}/>
 
         <Route path="/" exact>
           <div className="movie-list">
             <MovieList movies={display} />
           </div>
         </Route>
-         
-      </div>
 
+        <Route path="/movie/:id" component={MoviePage}/>
+  
+      </div>
     </Router>
   );
 }
