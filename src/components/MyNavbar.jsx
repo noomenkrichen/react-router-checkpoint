@@ -9,6 +9,7 @@ const MyNavbar = (props) => {
     setRate(newRating);
     props.searchMoviesRate(newRating);
   };
+  
   return (
     <Navbar bg="dark" variant="dark">
       <Link to="/">

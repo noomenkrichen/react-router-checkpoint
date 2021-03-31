@@ -1,44 +1,105 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 const MoviePage = ({match}) => {
+
+  const createMovie = ( id, title, description, posterUrl, rate ) => {
+    return {
+      imdbID: id,
+      title: title,
+      description: description,
+      posterUrl: posterUrl,
+      rate: rate,
+    };
+  };
+
+  const movies = [
+    createMovie(
+      "tt7975244",
+      "Jumanji",
+      "In Jumanji: The Next Level, the gang is back but the game has changed. As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
+      "https://m.media-amazon.com/images/M/MV5BOTVjMmFiMDUtOWQ4My00YzhmLWE3MzEtODM1NDFjMWEwZTRkXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      2
+    ),
+    createMovie(
+      "tt6320628",
+      "Spider-Man: Far from Home",
+      "Following the events of Avengers: Endgame (2019), Spider-Man must step up to take on new threats in a world that has changed forever.",
+      "https://m.media-amazon.com/images/M/MV5BMGZlNTY1ZWUtYTMzNC00ZjUyLWE0MjQtMTMxN2E3ODYxMWVmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      3
+    ),
+    createMovie(
+      "tt0458339",
+      "Captain America: The First Avenger",
+      "Steve Rogers, a rejected military soldier, transforms into Captain America after taking a dose of a Super-Soldier serum. But being Captain America comes at a price as he attempts to take down a war monger and a terrorist organization.",
+      "https://m.media-amazon.com/images/M/MV5BMTYzOTc2NzU3N15BMl5BanBnXkFtZTcwNjY3MDE3NQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      4
+    ),
+    createMovie(
+      "tt0848228",
+      "The Avengers",
+      "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+      "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      5
+    ),
+    createMovie(
+      "tt0371746",
+      "Iron-Man",
+      "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+      "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      2
+    ),
+    createMovie(
+      "tt2243973",
+      "Hannibal",
+      "Explores the early relationship between renowned psychiatrist, Hannibal Lecter, and his patient, a young FBI criminal profiler, who is haunted by his ability to empathize with serial killers.",
+      "https://m.media-amazon.com/images/M/MV5BNWU5YmJhNWEtZGVlOS00NmRhLThmNzUtYjAyMDA2MDg5ZTM4XkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_UY268_CR4,0,182,268_AL_.jpg",
+      3
+    ),
+    createMovie(
+      "tt2250912",
+      "Spider-Man: Homecoming",
+      "Peter Parker balances his life as an ordinary high school student in Queens with his superhero alter-ego Spider-Man, and finds himself on the trail of a new menace prowling the skies of New York City.",
+      "https://m.media-amazon.com/images/M/MV5BNTk4ODQ1MzgzNl5BMl5BanBnXkFtZTgwMTMyMzM4MTI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      2
+    ),
+    createMovie(
+      "tt0068646",
+      "The Godfather",
+      "An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.",
+      "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY268_CR3,0,182,268_AL_.jpg",
+      4
+    ),
+    createMovie(
+      "tt0111161",
+      "The Shawshank Redemption",
+      "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      1
+    ),
+    createMovie(
+      "tt0773262",
+      "Dexter",
+      "By day, mild-mannered Dexter is a blood-spatter analyst for the Miami police. But at night, he is a serial killer who only targets other murderers.",
+      "https://m.media-amazon.com/images/M/MV5BMTM5MjkwMTI0MV5BMl5BanBnXkFtZTcwODQwMTc0OQ@@._V1_UY268_CR7,0,182,268_AL_.jpg",
+      2
+    ),
+  ];
   
-  useEffect(()=>{
-    fetchItems();
-    //console.log(match)
-  },[match]);
-
-  const [movie,setMovie] = useState({});
-  //const [poster,setPoster] = useState('');
-
-  const fetchItems = async () => {
-      const data = await fetch(`http://www.omdbapi.com/?apikey=32520f97&i=${match.params.id}`);
-      //const image = await fetch(`http://img.omdbapi.com/?apikey=32520f97&i=${match.params.id}`);
-
-      const item = await data.json();
-      setMovie(item);
-      //setPoster(image);
-      //console.log(item);
-      //console.log(image);
-    }
+  console.log(match);
+  const movie = movies.find((el)=>el.imdbID===match.params.id);
+  console.log(movie);
 
   return (
     <div className="my-movie">
-      <h1>{movie.Title}</h1>
+      <h1>{movie.title}</h1>
       <div className="poster">
-        <img src={movie.Poster} alt="poster"/>
+        <img src={movie.posterUrl} alt="poster"/>
         <div>
-          <p><b>Released :</b> {movie.Released}</p>
-          <p><b>Production :</b> {movie.Production}</p>
-          <p><b>Writer :</b> {movie.Writer}</p>
-          <p><b>Actors :</b> {movie.Actors}</p>
-          <p><b>Plot :</b> {movie.Plot}</p>
-          <p><b>Awards :</b> {movie.Awards}</p>
-          <p><b>Box Office :</b> {movie.BoxOffice}</p>
-          <p><b>Director :</b> {movie.Director}</p>
-          <p><b>Genre :</b> {movie.Genre}</p>
-          <p><b>Run Time :</b> {movie.Runtime}</p>
+          <p><b>imdb ID :</b> {movie.imdbID}</p>
+          <p><b>Description :</b> {movie.description}</p>
+          <p><b>Rate :</b> {movie.rate}</p>
         </div>
-      </div>  <hr/>    
+      </div>   
     </div>
   );
 };
