@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 const MoviePage = ({match}) => {
 
@@ -85,9 +85,7 @@ const MoviePage = ({match}) => {
     ),
   ];
   
-  console.log(match);
   const movie = movies.find((el)=>el.imdbID===match.params.id);
-  console.log(movie);
 
   return (
     <div className="my-movie">

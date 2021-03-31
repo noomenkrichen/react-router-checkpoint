@@ -89,7 +89,6 @@ function App() {
       2
     ),
   ]);
-
   const [display, setDisplay] = useState([...movies]);
 
   const addMovie = (obj) => {
@@ -111,7 +110,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <MyNavbar searchMovies={searchMoviesTitle}   searchMoviesRate={searchMoviesRate} />
+        <MyNavbar searchMovies={searchMoviesTitle} searchMoviesRate={searchMoviesRate} />
         
         <AddMovieModal addMovie={addMovie} />
 
