@@ -110,7 +110,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <MyNavbar searchMovies={searchMoviesTitle} searchMoviesRate={searchMoviesRate} />
+        <MyNavbar searchMoviesTitle={searchMoviesTitle} searchMoviesRate={searchMoviesRate} />
         
         <AddMovieModal addMovie={addMovie} />
 
